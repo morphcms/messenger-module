@@ -1,0 +1,27 @@
+{
+    "name": "morphcms/messenger-module",
+    "type": "laravel-module",
+    "description": "",
+    "authors": [
+        {
+            "name": "Codrin Axinte",
+            "email": "codrin.axinte@binomeway.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Messenger\\": ""
+        }
+    },
+    "require": {
+        "rtippin/messenger": "^v1.21.0"
+    }
+}
