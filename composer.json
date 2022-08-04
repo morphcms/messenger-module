@@ -24,6 +24,8 @@
     "require": {
         "rtippin/messenger": "^v1.21.0",
         "rtippin/messenger-ui": "^v2.6.2",
-        "beyondcode/laravel-websockets": "^1.13.1"
+        "beyondcode/laravel-websockets": "^1.13.1",
+        "pusher/pusher-php-server": "~5.0",
+        "rtippin/janus-client": "^1.1"
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Modules\Messenger\Providers;
 
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 
@@ -28,6 +29,10 @@ class MessengerServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
+
+        $this->app->afterResolving(Schedule::class, function (Schedule $scheduler) {
+            $scheduler->command('messenger:calls:check-activity')->everyMinute();
+        });
     }
 
     /**
@@ -45,13 +50,26 @@ class MessengerServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerConfig()
+    protected function registerConfig(): void
+    {
+        $this->registerAndPublishConfig('messenger');
+        $this->registerAndPublishConfig('messenger-ui');
+        $this->registerAndPublishConfig('janus');
+        $this->registerAndPublishConfig('websockets');
+    }
+
+    /**
+     * @param $configName
+     * @return void
+     */
+    protected function registerAndPublishConfig($configName): void
     {
         $this->publishes([
-            module_path($this->moduleName, 'Config/config.php') => config_path($this->moduleNameLower . '.php'),
+            module_path($this->moduleName, "Config/$configName.php") => config_path($configName . '.php'),
         ], 'config');
-        $this->mergeConfigFrom(
-            module_path($this->moduleName, 'Config/config.php'), $this->moduleNameLower
+        $this->mergeconfigfrom(
+            module_path($this->moduleName, "Config/$configName.php"),
+            $configName
         );
     }
 
@@ -109,4 +127,5 @@ class MessengerServiceProvider extends ServiceProvider
         }
         return $paths;
     }
+
 }
