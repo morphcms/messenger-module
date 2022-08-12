@@ -4,10 +4,10 @@ namespace Modules\Messenger\Brokers;
 
 use RTippin\Janus\Exceptions\JanusApiException;
 use RTippin\Janus\Exceptions\JanusPluginException;
+use RTippin\Janus\Plugins\VideoRoom;
 use RTippin\Messenger\Contracts\VideoDriver;
 use RTippin\Messenger\Models\Call;
 use RTippin\Messenger\Models\Thread;
-use RTippin\Janus\Plugins\VideoRoom;
 
 class JanusBroker implements VideoDriver
 {
@@ -39,7 +39,7 @@ class JanusBroker implements VideoDriver
     /**
      * JanusBroker constructor.
      *
-     * @param VideoRoom $videoRoom
+     * @param  VideoRoom  $videoRoom
      */
     public function __construct(VideoRoom $videoRoom)
     {
@@ -47,7 +47,7 @@ class JanusBroker implements VideoDriver
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function create(Thread $thread, Call $call): bool
     {
@@ -69,7 +69,7 @@ class JanusBroker implements VideoDriver
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function destroy(Call $call): bool
     {
@@ -88,7 +88,7 @@ class JanusBroker implements VideoDriver
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getRoomId(): ?string
     {
@@ -96,7 +96,7 @@ class JanusBroker implements VideoDriver
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getRoomPin(): ?string
     {
@@ -104,7 +104,7 @@ class JanusBroker implements VideoDriver
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getRoomSecret(): ?string
     {
@@ -112,7 +112,7 @@ class JanusBroker implements VideoDriver
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getExtraPayload(): ?string
     {
@@ -120,7 +120,7 @@ class JanusBroker implements VideoDriver
     }
 
     /**
-     * @param Thread $thread
+     * @param  Thread  $thread
      * @return array
      */
     protected function settings(Thread $thread): array
@@ -133,7 +133,7 @@ class JanusBroker implements VideoDriver
     }
 
     /**
-     * @param Thread $thread
+     * @param  Thread  $thread
      * @return int
      */
     protected function publishersCount(Thread $thread): int
@@ -144,7 +144,7 @@ class JanusBroker implements VideoDriver
     }
 
     /**
-     * @param Thread $thread
+     * @param  Thread  $thread
      * @return int
      */
     protected function bitrate(Thread $thread): int

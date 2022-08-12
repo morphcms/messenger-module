@@ -11,4 +11,4 @@
 |
 */
 
-Route::get('messenger', fn() => abort(404))->name('portal');
+//Route::get('messenger', fn() => abort(404))->name('portal');

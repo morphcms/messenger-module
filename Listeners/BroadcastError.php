@@ -25,4 +25,5 @@ class BroadcastError
     public function handle(BroadcastFailedEvent $event): void
     {
         report($event->exception);
-    }}
+    }
+}

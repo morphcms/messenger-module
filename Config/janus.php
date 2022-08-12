@@ -16,7 +16,7 @@ return [
     'video_room_secret' => env('JANUS_VIDEO_ROOM_SECRET'),
 
     'main_servers' => [
-        "ws://23.88.124.127:8188/janus-ws",
-        "http://23.88.124.127:8088/janus",
+        'ws://23.88.124.127:8188/janus-ws',
+        'http://23.88.124.127:8088/janus',
     ],
 ];
