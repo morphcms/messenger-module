@@ -86,7 +86,7 @@ class MessengerServiceProvider extends ServiceProvider
         $this->publishes([
             module_path($this->moduleName, "Config/$configName.php") => config_path($configName.'.php'),
         ], 'config');
-        $this->mergeconfigfrom(
+        $this->mergeConfigfrom(
             module_path($this->moduleName, "Config/$configName.php"),
             $configName
         );
